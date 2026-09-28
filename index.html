@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f9f5">
+  <meta name="description" content="MEGA: Melody-Guided and Harmony-Aligned Vocal Accompaniment Generation. Read the paper and compare audio samples from MEGA, ACE-Step 1.5, LaDA-Band and AnyAccomp.">
+  <title>MEGA: Melody-Guided and Harmony-Aligned Vocal Accompaniment Generation</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/results.css">
+  <script src="assets/js/app.js?v=20260928-source-labels" defer></script>
+  <script src="assets/js/results.js" defer></script>
+  <script src="assets/js/page-motion.js" defer></script>
+  <script src="assets/js/page-thread.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <svg class="svg-definitions" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="icon-external" viewBox="0 0 24 24"><path d="M6 18 18 6M6 6h12v12"/></symbol>
+    <symbol id="icon-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7Z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-pause" viewBox="0 0 24 24"><path d="M8 5h3v14H8zm6 0h3v14h-3z" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="icon-volume" viewBox="0 0 24 24"><path d="m11 5-5 4H3v6h3l5 4ZM15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="icon-muted" viewBox="0 0 24 24"><path d="m11 5-5 4H3v6h3l5 4ZM16 9l5 6m0-6-5 6"/></symbol>
+    <symbol id="icon-headphones" viewBox="0 0 24 24"><path d="M4 14v-3a8 8 0 0 1 16 0v3M4 13H2v7h4v-7zm16 0h2v7h-4v-7z"/></symbol>
+    <symbol id="icon-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></symbol>
+    <symbol id="icon-paper" viewBox="0 0 24 24"><path d="M14 3H5v18h14V8Zm0 0v5h5M8 12h8m-8 4h8"/></symbol>
+    <symbol id="icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+    <symbol id="icon-expand" viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m8 0h5v-5"/></symbol>
+    <symbol id="icon-wave" viewBox="0 0 32 32"><path d="M3 14v4m5-10v16m6-21v26m6-23v20m6-15v10m5-7v4"/></symbol>
+  </svg>
+
+  <div id="page-thread" aria-hidden="true">
+    <svg id="thread-svg" xmlns="http://www.w3.org/2000/svg" focusable="false">
+      <defs>
+        <linearGradient id="thread-gradient" gradientUnits="userSpaceOnUse"><stop stop-color="#8da477"/><stop offset=".22" stop-color="#547953"/><stop offset=".46" stop-color="#a0b484"/><stop offset=".7" stop-color="#436b4e"/><stop offset="1" stop-color="#7f9869"/></linearGradient>
+        <path id="thread-path" pathLength="1000"/>
+        <g id="vine-leaf">
+          <path class="vine-petiole" d="M0 0 Q8 -3 9 -13"/>
+          <path class="vine-leaf-blade" d="M8 -11 C-5 -17 -1 -37 26 -46 C30 -27 26 -12 8 -11Z"/>
+          <path class="vine-leaf-fold" d="M8 -11 Q14 -28 26 -46 C30 -27 26 -12 8 -11Z"/>
+          <path class="vine-leaf-vein" d="M8 -11 Q14 -28 26 -46 M12 -22 4 -25 M17 -32 10 -34 M14 -26 23 -27"/>
+        </g>
+        <path id="vine-tendril" d="M0 0 C7 -8 22 -10 28 -22 C35 -37 17 -43 13 -29 C9 -15 28 -15 24 -28"/>
+      </defs>
+      <g id="thread-ribbon" stroke-dasharray="0 1000">
+        <use href="#thread-path" class="thread-shadow"/>
+        <use href="#thread-path" class="thread-body"/>
+        <use href="#thread-path" class="thread-light"/>
+      </g>
+      <g id="vine-foliage"/>
+    </svg>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#overview" data-section="overview" aria-label="MEGA overview"><svg class="icon brand-wave"><use href="#icon-wave"/></svg><span>MEGA<span class="brand-dot">.</span></span></a>
+    <nav aria-label="Main navigation">
+      <div class="section-nav"><a class="nav-link is-active" href="#overview" data-section="overview" aria-current="location">Overview</a><a class="nav-link" href="#results" data-section="results">Results</a><a class="nav-link" href="#demos" data-section="demos">Audio Demos</a></div>
+      <a class="nav-resource" href="assets/paper/MEGA.pdf" target="_blank" rel="noopener">Paper<svg class="icon"><use href="#icon-external"/></svg></a>
+      <a class="nav-resource" href="https://github.com/ASLP-lab/MEGA" target="_blank" rel="noopener">Code<svg class="icon"><use href="#icon-external"/></svg></a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div id="overview" tabindex="-1">
+      <section class="hero container">
+        <div class="eyebrow hero-enter"><span class="status-dot"></span>VOCAL-TO-ACCOMPANIMENT GENERATION</div>
+        <div class="hero-word hero-enter" aria-hidden="true"><span>M</span><span>E</span><span>G</span><span>A</span><span class="hero-period">.</span></div>
+        <h1 class="hero-enter">MEGA: Melody-Guided and Harmony-Aligned<br class="desktop-break"> Vocal Accompaniment Generation</h1>
+        <div class="authors hero-enter">
+          <p>Yuxuan Xia<sup>1,*</sup><span>·</span>Guobin Ma<sup>1,*</sup><span>·</span>Hongyu Lyu<sup>1</sup><span>·</span>Yuepeng Jiang<sup>1</sup></p>
+          <p>Huakang Chen<sup>1</sup><span>·</span>Mengqi Wei<sup>1</sup><span>·</span>Liumeng Xue<sup>2,3</sup><span>·</span>Lei Xie<sup>1,**</sup></p>
+        </div>
+        <p class="affiliation hero-enter"><sup>1</sup> Audio, Speech and Language Processing Group (ASLP@NPU),<br>School of Computer Science, Northwestern Polytechnical University, Xi’an, China<br><sup>2</sup> School of Intelligence Science and Technology, Nanjing University, Suzhou, China<br><sup>3</sup> State Key Laboratory of Novel Software Technology, Nanjing University, Nanjing, China</p>
+        <p class="author-notes hero-enter">* These authors contributed equally. <span>** indicates the corresponding author.</span></p>
+        <div class="hero-actions hero-enter">
+          <a class="button button-primary" href="#demos" data-section="demos"><svg class="icon"><use href="#icon-headphones"/></svg><span>Listen to demos</span><svg class="icon button-arrow"><use href="#icon-arrow"/></svg></a>
+          <a class="button button-outline" href="assets/paper/MEGA.pdf" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-paper"/></svg><span>Read the paper</span></a>
+          <a class="button button-outline" href="https://github.com/ASLP-lab/MEGA" target="_blank" rel="noopener"><svg class="icon"><use href="#icon-code"/></svg><span>Code</span></a>
+        </div>
+        <div class="melody-field" aria-hidden="true"><canvas id="melody-canvas"></canvas><span class="field-label">A VOICE. A MELODY. AN ARRANGEMENT.</span></div>
+        <a class="scroll-cue" href="#abstract">Explore the research <span>↓</span></a>
+      </section>
+
+      <section id="abstract" class="research-section container">
+        <div class="section-side reveal"><span class="eyebrow section-index">01 / THE RESEARCH</span><h2>Abstract<span class="green-dot">.</span></h2></div>
+        <div class="abstract-copy">
+          <p class="reveal">Vocal-to-accompaniment generation (V2A) aims to generate instrumental accompaniment that musically matches a given vocal performance. Existing V2A methods typically take as input either vocal audio representations or simplified melody representations extracted from the same vocal. The former entangle melody with timbre and other acoustic factors, while the latter discard potentially useful vocal context.</p>
+          <p class="reveal">Moreover, explicit optimization for vocal–accompaniment compatibility remains limited. In this study, we propose MEGA, a <strong>ME</strong>lody-<strong>G</strong>uided and Harmony-<strong>A</strong>ligned V2A framework built upon the pretrained ACE-Step 1.5. MEGA injects melody cues into the backbone’s vocal-conditioned hidden states through a zero-gated cross-attention plugin, preserving rich vocal context while providing explicit melodic guidance.</p>
+          <p class="reveal">Factorized guidance independently adjusts text and melody contributions to balance text-driven arrangement with melodic adherence. We further employ harmony-aware direct preference optimization to improve both musical quality and vocal–accompaniment compatibility. Experimental results show that MEGA outperforms the compared V2A systems in overall musical quality and vocal–accompaniment compatibility. Audio demos are available at <a href="https://aslp-lab.github.io/MEGA/">https://aslp-lab.github.io/MEGA/</a>, and the code will be released as open source.</p>
+        </div>
+      </section>
+
+      <section class="architecture-section container">
+        <div class="section-heading reveal"><div><span class="eyebrow section-index">02 / THE FRAMEWORK</span><h2>Melody-guided.<br>Harmony-aligned<span class="green-dot">.</span></h2></div><p>Explicit melody guidance meets<br>rich vocal context.</p></div>
+        <figure class="architecture-figure reveal">
+          <button id="expand-architecture" class="figure-expand" type="button" aria-label="Enlarge model architecture"><img src="assets/images/architecture.png" width="2600" height="1379" loading="lazy" alt="MEGA architecture. A frozen ACE-Step backbone receives vocal and caption context; a trainable melody plugin injects time-aligned MIDI through gated cross-attention. Quality ranking and compatibility filtering select preference pairs for DPO."><span class="expand-hint"><svg class="icon"><use href="#icon-expand"/></svg>Expand figure</span></button>
+          <figcaption>Overview of MEGA. <span>(a) Melody-guided generation with a frozen backbone. (b) Quality ranking and compatibility filtering for preference optimization.</span></figcaption>
+        </figure>
+        <div class="method-notes">
+          <div class="reveal"><span class="note-number">01</span><h3>Melody conditioning</h3><p>Time-aligned MIDI complements the source vocal through a gated cross-attention plugin.</p></div>
+          <div class="reveal"><span class="note-number">02</span><h3>Factorized guidance</h3><p>Backbone and melody guidance are separated for independent control at inference time.</p></div>
+          <div class="reveal"><span class="note-number">03</span><h3>Harmony alignment</h3><p>Compatibility-filtered preference pairs guide direct preference optimization.</p></div>
+        </div>
+      </section>
+
+    </div>
+
+    <div id="results" tabindex="-1">
+    <section id="objective" class="results-section container" aria-labelledby="objective-title">
+      <div class="results-section-heading reveal"><div><p class="eyebrow section-index">03 / THE RESULTS</p><h2 id="objective-title">Results<span class="green-dot">.</span></h2></div><p>The same 500 songs per test set.<br>Four generation systems, compared metric by metric.<br><a class="results-paper-link" href="assets/paper/MEGA.pdf#page=4" target="_blank" rel="noopener">Table 1 in the paper ↗</a></p></div>
+      <div class="comparison-controls reveal">
+        <fieldset class="dataset-switch"><legend class="sr-only">Choose the objective evaluation dataset</legend><label><input type="radio" name="dataset" value="suno70k" checked><span>Suno70K</span></label><label><input type="radio" name="dataset" value="real_world"><span>Real-world</span></label></fieldset>
+        <p class="chart-legend"><span class="legend-dot"></span> MEGA (Ours)<span class="legend-dot baseline-dot"></span> Comparison systems</p>
+      </div>
+      <p id="dataset-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div id="results-data-error" class="results-error" role="alert" hidden><p>Results could not be loaded. Please try again or open Table 1 in the paper.</p><button id="retry-results" class="button button-outline" type="button">Try again</button></div>
+      <div id="objective-charts" class="metric-grid" aria-label="Objective scores for Suno70K">
+          <article class="metric-card reveal" data-metric="se" aria-busy="true"><p class="chart-loading">Loading SongEval…</p></article>
+          <article class="metric-card reveal" data-metric="sb" aria-busy="true"><p class="chart-loading">Loading SongBench…</p></article>
+          <article class="metric-card reveal" data-metric="apa" aria-busy="true"><p class="chart-loading">Loading APA…</p></article>
+          <article class="metric-card reveal" data-metric="ab" aria-busy="true"><p class="chart-loading">Loading AudioBox…</p></article>
+          <article class="metric-card reveal" data-metric="fad" aria-busy="true"><p class="chart-loading">Loading FAD…</p></article>
+      </div>
+      <p class="results-chart-note">Objective scores from Table 1. Dots show raw scores on a labeled, focused axis; each metric keeps the same axis across datasets. Shading marks the gap between MEGA and the strongest comparison system. Rankings exclude Ground Truth, which remains a separate reference.</p>
+    </section>
+
+    <section id="subjective" class="listening-results container reveal" aria-labelledby="subjective-title">
+      <div class="results-section-heading"><div><p class="eyebrow section-index">THE LISTENING EXPERIENCE</p><h2 id="subjective-title">Three dimensions.<br>Three top scores<span>.</span></h2></div><span class="pooled-badge">POOLED ACROSS BOTH DATASETS</span></div>
+      <p class="listening-intro">MEGA has the highest reported mean opinion score in all three listening dimensions.</p>
+      <p class="listening-protocol">Five-point scale · Mean opinion score (MOS) ± 95% confidence interval half-width</p>
+      <div class="subjective-grid">
+          <article class="listening-card" data-subjective="aq" aria-busy="true"><p class="chart-loading">Loading listening scores…</p></article>
+          <article class="listening-card" data-subjective="am" aria-busy="true"><p class="chart-loading">Loading listening scores…</p></article>
+          <article class="listening-card" data-subjective="vac" aria-busy="true"><p class="chart-loading">Loading listening scores…</p></article>
+      </div>
+      <div class="listening-footnote"><p>Dots show the mean; whiskers show the 95% confidence interval. The labeled axis zooms into the reported scores on the full 1–5 rating scale. These pooled results stay the same when you switch the objective dataset.</p></div>
+    </section>
+
+    </div>
+
+    <div id="demos" tabindex="-1">
+      <section class="demo-intro container">
+        <div class="eyebrow reveal"><span class="status-dot"></span>THE LISTENING ROOM</div>
+        <div class="demo-title-row reveal"><h2>Audio Demos<span class="green-dot">.</span></h2><div class="sample-stamp"><strong id="total-samples">10</strong><span>SAMPLES</span></div></div>
+        <p class="demo-subtitle reveal">One vocal. Four ways to accompany it.</p>
+        <div class="listening-note reveal"><p>Compare the original vocal with each model’s generated accompaniment, mixed with the same vocal.</p><span><svg class="icon"><use href="#icon-headphones"/></svg>Best with headphones</span></div>
+      </section>
+
+      <section class="demo-library container" aria-label="Audio sample library">
+        <div class="library-meta reveal"><p id="results-count" aria-live="polite">Loading samples…</p><label class="sync-control"><input id="sync-switch" type="checkbox" checked><span class="switch-visual" aria-hidden="true"></span><span>Keep position when switching models</span></label></div>
+        <p class="mobile-compare-hint">Swipe across the players to compare all five tracks <span aria-hidden="true">→</span></p>
+        <div id="sample-wheel" class="sample-wheel" hidden>
+          <div id="sample-list" class="sample-list" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Audio samples" aria-describedby="wheel-help" aria-busy="true"></div>
+          <div class="wheel-rail" aria-label="Sample controls">
+            <button id="wheel-previous" class="wheel-arrow" type="button" aria-label="Previous song" aria-controls="sample-list">↑</button>
+            <span class="wheel-position"><strong id="wheel-current">01</strong><span>/</span><span id="wheel-total">10</span></span>
+            <div class="wheel-track" aria-hidden="true"><span id="wheel-progress"></span></div>
+            <button id="wheel-next" class="wheel-arrow" type="button" aria-label="Next song" aria-controls="sample-list">↓</button>
+          </div>
+          <p id="wheel-help" class="wheel-help"><span aria-hidden="true">↕</span> Scroll or swipe to explore · loops continuously <span class="wheel-keyboard-hint">· ↑ ↓ keys to switch songs</span></p>
+          <span id="wheel-announcement" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></span>
+        </div>
+        <div id="load-error" class="empty-state" hidden><h3>Samples could not be loaded</h3><p>Please refresh the page to try again.</p><button id="retry-load" class="button button-outline" type="button">Try again</button></div>
+      </section>
+      <div class="demo-bottom container"><span>MELODY GUIDANCE & HARMONY ALIGNMENT</span><a href="#overview" data-section="overview">Back to the research<svg class="icon"><use href="#icon-arrow"/></svg></a></div>
+    </div>
+  </main>
+
+  <footer class="site-footer container"><a class="brand" href="#overview" data-section="overview"><svg class="icon brand-wave"><use href="#icon-wave"/></svg><span>MEGA<span class="brand-dot">.</span></span></a><span class="footer-credit">Northwestern Polytechnical University · Nanjing University</span><div><a href="assets/paper/MEGA.pdf" target="_blank" rel="noopener">Paper ↗</a><a href="https://github.com/ASLP-lab/MEGA" target="_blank" rel="noopener">Code ↗</a></div></footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="architecture-dialog" aria-label="Model architecture"><button id="close-architecture" class="dialog-close" type="button" aria-label="Close model architecture"><svg class="icon"><use href="#icon-close"/></svg></button><img src="assets/images/architecture.png" alt="Full MEGA architecture diagram"><a href="assets/images/architecture.pdf" target="_blank" rel="noopener">Open original PDF ↗</a></dialog>
+  <noscript><div class="noscript-note">JavaScript is needed for the audio comparison players. You can still read the overview and <a href="assets/paper/MEGA.pdf">download the paper</a>.</div></noscript>
+</body>
+</html>

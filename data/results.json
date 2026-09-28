@@ -1,0 +1,237 @@
+{
+  "source": {
+    "label": "Table 1",
+    "paper": "assets/paper/MEGA.pdf#page=4",
+    "note": "Ground Truth is a reference; subjective results are pooled across datasets."
+  },
+  "models": [
+    {
+      "id": "mega",
+      "label": "MEGA"
+    },
+    {
+      "id": "ace",
+      "label": "ACE-Step 1.5"
+    },
+    {
+      "id": "lada",
+      "label": "LaDA-Band"
+    },
+    {
+      "id": "anyaccomp",
+      "label": "AnyAccomp"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "se",
+      "label": "SongEval",
+      "category": "Song quality",
+      "description": "Coherence, musicality, memorability, clarity, and naturalness.",
+      "direction": "higher",
+      "axisMax": 5
+    },
+    {
+      "id": "sb",
+      "label": "SongBench",
+      "category": "Song quality",
+      "description": "A multi-aspect assessment of the complete song.",
+      "direction": "higher",
+      "axisMax": 10
+    },
+    {
+      "id": "apa",
+      "label": "APA",
+      "category": "Vocal compatibility",
+      "description": "Accompaniment Prompt Adherence: how well the accompaniment fits the vocal context.",
+      "direction": "higher",
+      "axisMax": 1
+    },
+    {
+      "id": "ab",
+      "label": "AudioBox",
+      "category": "Audio aesthetics",
+      "description": "AudioBox Aesthetics evaluates enjoyment, usefulness, complexity, and production quality.",
+      "direction": "higher",
+      "axisMax": 10
+    },
+    {
+      "id": "fad",
+      "label": "FAD",
+      "category": "Distributional similarity",
+      "description": "Fréchet Audio Distance between generated and reference accompaniments.",
+      "direction": "lower",
+      "axisMax": 1
+    }
+  ],
+  "datasets": {
+    "suno70k": {
+      "label": "Suno70K",
+      "songs": 500,
+      "scores": {
+        "ground_truth": {
+          "se": 4.34,
+          "sb": 6.33,
+          "ab": 7.4,
+          "apa": 1.0,
+          "fad": 0.0
+        },
+        "ace": {
+          "se": 3.34,
+          "sb": 5.24,
+          "ab": 6.66,
+          "apa": 0.26,
+          "fad": 0.61
+        },
+        "lada": {
+          "se": 3.81,
+          "sb": 5.66,
+          "ab": 7.19,
+          "apa": 0.1,
+          "fad": 0.35
+        },
+        "anyaccomp": {
+          "se": 3.4,
+          "sb": 5.54,
+          "ab": 7.28,
+          "apa": 0.0,
+          "fad": 0.7
+        },
+        "mega": {
+          "se": 3.98,
+          "sb": 6.17,
+          "ab": 7.2,
+          "apa": 0.52,
+          "fad": 0.54
+        }
+      }
+    },
+    "real_world": {
+      "label": "Real-world",
+      "songs": 500,
+      "scores": {
+        "ground_truth": {
+          "se": 3.97,
+          "sb": 6.25,
+          "ab": 7.25,
+          "apa": 1.0,
+          "fad": 0.0
+        },
+        "ace": {
+          "se": 3.07,
+          "sb": 5.27,
+          "ab": 6.91,
+          "apa": 0.51,
+          "fad": 0.54
+        },
+        "lada": {
+          "se": 3.59,
+          "sb": 5.72,
+          "ab": 7.19,
+          "apa": 0.33,
+          "fad": 0.29
+        },
+        "anyaccomp": {
+          "se": 3.22,
+          "sb": 5.62,
+          "ab": 7.2,
+          "apa": 0.22,
+          "fad": 0.7
+        },
+        "mega": {
+          "se": 3.66,
+          "sb": 5.96,
+          "ab": 7.17,
+          "apa": 0.75,
+          "fad": 0.42
+        }
+      }
+    }
+  },
+  "subjective": {
+    "pooled": true,
+    "scale": [
+      1,
+      5
+    ],
+    "confidenceLevel": 0.95,
+    "interval": "half-width",
+    "metrics": [
+      {
+        "id": "aq",
+        "label": "Audio Quality"
+      },
+      {
+        "id": "am",
+        "label": "Arrangement Musicality"
+      },
+      {
+        "id": "vac",
+        "label": "Vocal–Accompaniment Compatibility"
+      }
+    ],
+    "scores": {
+      "ground_truth": {
+        "aq": null,
+        "am": null,
+        "vac": null
+      },
+      "ace": {
+        "aq": {
+          "mean": 3.45,
+          "ci": 0.16
+        },
+        "am": {
+          "mean": 3.4,
+          "ci": 0.17
+        },
+        "vac": {
+          "mean": 3.55,
+          "ci": 0.16
+        }
+      },
+      "lada": {
+        "aq": {
+          "mean": 3.89,
+          "ci": 0.13
+        },
+        "am": {
+          "mean": 3.82,
+          "ci": 0.14
+        },
+        "vac": {
+          "mean": 3.78,
+          "ci": 0.15
+        }
+      },
+      "anyaccomp": {
+        "aq": {
+          "mean": 3.32,
+          "ci": 0.17
+        },
+        "am": {
+          "mean": 3.45,
+          "ci": 0.16
+        },
+        "vac": {
+          "mean": 3.36,
+          "ci": 0.18
+        }
+      },
+      "mega": {
+        "aq": {
+          "mean": 4.18,
+          "ci": 0.12
+        },
+        "am": {
+          "mean": 4.25,
+          "ci": 0.11
+        },
+        "vac": {
+          "mean": 4.27,
+          "ci": 0.12
+        }
+      }
+    }
+  }
+}
